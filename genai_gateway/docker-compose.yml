@@ -2,7 +2,13 @@ services:
   oci-genai-gateway:
     image: engchina/oci_genai_gateway:latest
     container_name: oci-genai-gateway
-    restart: always
+    restart: on-failure
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 120s    # 2分钟
+        max_attempts: 0  # 0表示无限重试
+        window: 120s
     ports:
       - "8088:8088"
     volumes:

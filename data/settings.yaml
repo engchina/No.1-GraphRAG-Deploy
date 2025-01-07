@@ -27,7 +27,7 @@ embed_graph:
 embeddings:
   async_mode: threaded
   llm:
-    api_base: http://localhost:8088/v1
+    api_base: http://oci-genai-gateway:8088/v1
     api_key: sk-123456
     api_version: 2024-02-15-preview
     batch_max_tokens: 400
@@ -69,7 +69,7 @@ input:
   file_type: text
   type: file
 llm:
-  api_base: http://localhost:8088/v1
+  api_base: http://oci-genai-gateway:8088/v1
   api_key: sk-123456
   api_version: 2024-02-15-preview
   compartment_id: ${OCI_COMPARTMENT_ID}
@@ -81,7 +81,7 @@ llm:
   model: cohere.command-r-08-2024
   model_id: cohere.command-r-08-2024
   model_supports_json: false
-  proxy: http://localhost:8088/v1
+  proxy: http://oci-genai-gateway:8088/v1
   requests_burst_mode: false
   requests_per_minute: 10
   sleep_on_rate_limit: true

@@ -8,11 +8,6 @@ packages:
   - unzip
   - gcc
   - build-essential
-  - libmagic-dev
-  - libgl1-mesa-dev
-  - poppler-utils
-  - libreoffice
-  - pandoc
   - dos2unix
 write_files:
   - path: "/u01/aipoc/props/db.env"

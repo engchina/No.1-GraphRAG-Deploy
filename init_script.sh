@@ -1,9 +1,6 @@
 #!/bin/bash
 echo "Initializing application setup..."
 
-# Oracle Instant Client setup
-cd /u01/aipoc
-
 # Git clone source code
 cd /u01/aipoc/No.1-GraphRAG
 dos2unix main.cron
