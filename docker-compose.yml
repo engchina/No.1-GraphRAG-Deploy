@@ -1,0 +1,20 @@
+services:
+  graphrag:
+    image: engchina/no.1-graphrag:v0.0.1
+    container_name: graphrag
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - /root/.oci:/root/.oci
+      - /u01/aipoc/No.1-GraphRAG/wallet.zip:/u01/aipoc/No.1-GraphRAG/wallet.zip
+      - /u01/aipoc/No.1-GraphRAG/.env:/u01/aipoc/No.1-GraphRAG/.env
+      - /u01/aipoc/No.1-GraphRAG/data/upload:/u01/aipoc/No.1-GraphRAG/data/upload
+      - /u01/aipoc/No.1-GraphRAG/data/output:/u01/aipoc/No.1-GraphRAG/data/output
+    networks:
+      - aipoc-network
+
+networks:
+  aipoc-network:
+    name: aipoc-network
+    external: true

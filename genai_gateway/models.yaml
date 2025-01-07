@@ -1,0 +1,26 @@
+- region: ap-osaka-1
+  compartment_id: OCI_COMPARTMENT_ID
+  models:
+    ondemand:
+      - name: cohere.command-r-plus-08-2024
+        model_id: cohere.command-r-plus-08-2024
+        description: "Chat models: Optimized for complex tasks, offers advanced language understanding, higher capacity, and more nuanced responses, and can maintain context from its long conversation history of 128,000 tokens. Also ideal for question-answering, sentiment analysis, and information retrieval."
+
+      - name: cohere.command-r-08-2024
+        model_id: cohere.command-r-08-2024
+        description: "Optimized for conversational interaction and long context tasks. Ideal for text generation, summarization, translation, or text-based classification."
+
+    embedding:
+      - name : cohere.embed-multilingual-v3.0
+        model_id : cohere.embed-multilingual-v3.0
+        description: "Provides multilingual classification and embedding support."
+
+    dedicated:
+      - name: my-dedicated-model-name
+        endpoint: https://ocid1.generativeaiendpoint....  # endpoint url for dedicated model
+        description: "my dedicated model description"
+
+    datascience:
+      - name: my-datascience-model-name
+        endpoint: https://modeldeployment.xxxxxx/predict  # Model deployment endpoint url
+        description: "my dedicated model description"

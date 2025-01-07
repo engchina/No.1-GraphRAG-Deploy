@@ -1,0 +1,45 @@
+#cloud-config
+output: {all: '| tee -a /var/log/cloud-init-custom.log'}
+bootcmd:
+  - echo "Starting boot command..."
+  - mkdir -p /u01/aipoc/props
+packages:
+  - git
+  - unzip
+  - gcc
+  - build-essential
+  - libmagic-dev
+  - libgl1-mesa-dev
+  - poppler-utils
+  - tesseract-ocr
+  - tesseract-ocr-eng
+  - tesseract-ocr-jpn
+  - libreoffice
+  - pandoc
+  - dos2unix
+write_files:
+  - path: "/u01/aipoc/props/db.env"
+    permissions: "0644"
+    encoding: "gzip+base64"
+    content: |
+      ${oci_adb_conn_string}
+  - path: "/u01/aipoc/props/compartment_id.txt"
+    permissions: "0644"
+    content: ${output_compartment_ocid}
+  - path: "/u01/aipoc/No.1-GraphRAG/wallet.zip"
+    permissions: "0644"
+    encoding: base64
+    content: |
+      ${oci_adb_wallet_content}
+runcmd:
+  - echo "Running environment setup..."
+  - iptables -I INPUT 6 -m state --state NEW -p tcp --dport 8080 -j ACCEPT
+  - iptables -I INPUT 7 -m state --state NEW -p tcp --dport 3000 -j ACCEPT
+  - netfilter-persistent save
+  - echo "Downloading and running init script..."
+  - cd /u01/aipoc
+  - ssh-keyscan github.com >> /root/.ssh/known_hosts && chmod 600 /root/.ssh/known_hosts
+  - git clone https://github.com/engchina/No.1-GraphRAG-Deploy.git No.1-GraphRAG
+  - cp No.1-GraphRAG/init_script.sh init_script.sh
+  - chmod +x init_script.sh
+  - nohup bash init_script.sh >> /var/log/cloud-init-custom.log 2>&1 &

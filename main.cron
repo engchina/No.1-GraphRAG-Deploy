@@ -1,0 +1,3 @@
+@reboot /bin/bash /u01/aipoc/No.1-GraphRAG/langfuse/main.sh
+@reboot /bin/bash /u01/aipoc/No.1-GraphRAG/genai_gateway/main.sh
+@reboot /bin/bash /u01/aipoc/No.1-GraphRAG/main.sh

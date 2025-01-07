@@ -1,0 +1,124 @@
+async_mode: threaded
+cache:
+  base_dir: output/cache
+  type: file
+chunks:
+  group_by_columns:
+  - id
+  overlap: 0
+  size: 384
+claim_extraction:
+  description: Any claims or facts that could be relevant to information discovery.
+  enabled: false
+  entity_types:
+  - 人物
+  max_gleanings: 1
+  prompt: prompts/zh/claim_extraction.txt
+cluster_graph:
+  max_cluster_size: 10
+community_reports:
+  max_input_length: 8000
+  max_length: 2000
+  prompt: output/prompts/jp/community_report.txt
+drift_search:
+  prompt: output/prompts/{language}/drift_search_system_prompt.txt
+embed_graph:
+  enabled: false
+embeddings:
+  async_mode: threaded
+  llm:
+    api_base: http://localhost:8088/v1
+    api_key: sk-123456
+    api_version: 2024-02-15-preview
+    batch_max_tokens: 400
+    compartment_id: ${OCI_COMPARTMENT_ID}
+    concurrent_requests: 4
+    config_profile: DEFAULT
+    endpoint: https://inference.generativeai.ap-osaka-1.oci.oraclecloud.com
+    max_retries: 10
+    max_retry_wait: 30
+    model: cohere.embed-multilingual-v3.0
+    model_id: cohere.embed-multilingual-v3.0
+    requests_burst_mode: false
+    requests_per_minute: 10
+    sleep_on_rate_limit: true
+    type: openai_embedding
+  vector_store:
+    store_in_table: true
+    type: oracle_ai_search
+encoding_model: cl100k_base
+entity_extraction:
+  entity_types:
+  - 人物
+  max_gleanings: 1
+  num_threads: 4
+  prompt: output/prompts/jp/entity_extraction.txt
+global_search:
+  knowledge_prompt: output/prompts/{language}/global_search_knowledge_system_prompt.txt
+  map_prompt: output/prompts/{language}/global_search_map_system_prompt.txt
+  reduce_prompt: output/prompts/{language}/global_search_reduce_system_prompt.txt
+group:
+  entity_types:
+  - 人物
+  - 場所
+  language: jp
+input:
+  base_dir: output/inputs
+  file_encoding: utf-8
+  file_pattern: .*\.txt$
+  file_type: text
+  type: file
+llm:
+  api_base: http://localhost:8088/v1
+  api_key: sk-123456
+  api_version: 2024-02-15-preview
+  compartment_id: ${OCI_COMPARTMENT_ID}
+  concurrent_requests: 4
+  config_profile: DEFAULT
+  endpoint: https://inference.generativeai.ap-osaka-1.oci.oraclecloud.com
+  max_retries: 10
+  max_retry_wait: 30
+  model: cohere.command-r-08-2024
+  model_id: cohere.command-r-08-2024
+  model_supports_json: false
+  proxy: http://localhost:8088/v1
+  requests_burst_mode: false
+  requests_per_minute: 10
+  sleep_on_rate_limit: true
+  temperature: 0.0
+  top_k: 0
+  top_p: 0.75
+  type: openai_chat
+local_search:
+  prompt: output/prompts/{language}/local_search_system_prompt.txt
+parallelization:
+  stagger: 0.3
+reporting:
+  base_dir: output/reports
+  type: file
+skip_workflows:
+- create_base_text_units
+- create_final_documents
+- extract_graph
+- compute_communities
+- create_final_covariates
+- create_final_entities
+- create_final_nodes
+- create_final_communities
+- create_final_relationships
+- create_final_community_reports
+- create_final_text_units
+snapshots:
+  embeddings: true
+  graphml: false
+  raw_entities: false
+  top_level_nodes: false
+  transient: true
+storage:
+  base_dir: output/artifacts
+  type: file
+summarize_descriptions:
+  max_length: 500
+  prompt: output/prompts/jp/summarize_descriptions.txt
+umap:
+  enabled: false

@@ -1,0 +1,18 @@
+services:
+  oci-genai-gateway:
+    image: engchina/oci_genai_gateway:latest
+    container_name: oci-genai-gateway
+    restart: always
+    ports:
+      - "8088:8088"
+    volumes:
+      - /u01/aipoc/No.1-GraphRAG/genai_gateway/config.py:/app/config.py
+      - /u01/aipoc/No.1-GraphRAG/genai_gateway/models.yaml:/app/models.yaml
+      - /root/.oci:/root/.oci
+    networks:
+      - aipoc-network
+
+networks:
+  aipoc-network:
+    name: aipoc-network
+    external: true

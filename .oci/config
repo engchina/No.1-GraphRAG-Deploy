@@ -1,0 +1,6 @@
+[DEFAULT]
+user=ocid1.user.oc1..TODO
+tenancy=ocid1.tenancy.oc1..TODO
+region=ap-osaka-1
+fingerprint=TODO
+key_file=/root/.oci/oci_api_key.pem
