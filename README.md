@@ -1,4 +1,4 @@
-# Deploy No.1 GraphGAG to OCI
+# Deploy No.1 GraphRAG to OCI
 
 ## Deploy
 
