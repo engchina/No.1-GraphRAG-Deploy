@@ -1,6 +1,6 @@
 services:
   graphrag:
-    image: engchina/no.1-graphrag:v0.0.1
+    image: engchina/no.1-graphrag:v0.9.0
     container_name: graphrag
     restart: always
     ports:
