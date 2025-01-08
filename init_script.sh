@@ -37,6 +37,5 @@ chmod +x main.sh
 ./main.sh &
 
 chmod +x ./genai_gateway/main.sh
-# Must run in the after setting
-# nohup ./genai_gateway/main.sh &
+nohup ./genai_gateway/main.sh &
 echo "Initialization complete."
