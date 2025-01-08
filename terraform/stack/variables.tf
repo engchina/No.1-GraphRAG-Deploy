@@ -43,7 +43,7 @@ variable "instance_boot_volume_vpus" {
 }
 
 variable "instance_image_source_id" {
-  default = "ocid1.image.oc1.ap-tokyo-1.aaaaaaaaoiusqhftxmiyjlulnxx5mdnqfv6pjx4hdcoks3exn7gsrcwpkpdq"
+  default = "ocid1.image.oc1.ap-osaka-1.aaaaaaaa7sbmd5q54w466eojxqwqfvvp554awzjpt2behuwsiefrxnwomq5a"
 }
 
 variable "subnet_ai_subnet_id" {
